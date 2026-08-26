@@ -2,6 +2,8 @@ package com.booleanuk.core;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,9 @@ public abstract class Account {
     private String name;
     private BigDecimal balance;
     private final List<Transaction> transactions;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            .withZone(ZoneId.systemDefault());
 
     public Account(String name, BigDecimal balance) {
         this.name = name;
@@ -51,6 +56,14 @@ public abstract class Account {
             }
 
             this.balance = this.balance.subtract(money);
+
+            Transaction transaction = new Transaction(
+                    Instant.now(),
+                    money,
+                    null,
+                    getBalance());
+
+            transactions.add(transaction);
             return;
         }
 
@@ -59,5 +72,30 @@ public abstract class Account {
 
     public List<Transaction> getTransactions() {
         return this.transactions;
+    }
+
+    public String getTransactionsOnPrint() {
+        String headers = String.format("%s || %6s || %5s || %s\n", "date", "credit", "debit", "balance");
+
+        StringBuilder print = new StringBuilder();
+
+        for (Transaction t : this.transactions) {
+            String date = formatter.format(t.getDate());
+            String credit = formatNullToString(t.getCredit());
+            String debit = formatNullToString(t.getDebit());
+            String balance = formatNullToString(t.getBalance());
+
+            print.append(String.format("%10s || %6s || %5s || %s\n", date, credit, debit, balance));
+        }
+
+        return headers + print.toString();
+    }
+
+    private String formatNullToString(BigDecimal num) {
+        if (num == null) {
+            return "";
+        }
+
+        return num.toString();
     }
 }
