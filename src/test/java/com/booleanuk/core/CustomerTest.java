@@ -37,4 +37,10 @@ public class CustomerTest {
         Assertions.assertEquals(2, accounts.size());
     }
 
+    @Test
+    public void getAllAccounts_shouldReturnNoAccounts_successfully() {
+        List<Account> accounts = customer.getAccounts();
+
+        Assertions.assertEquals(0, accounts.size());
+    }
 }

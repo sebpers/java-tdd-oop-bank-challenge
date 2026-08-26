@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Customer extends User{
 
-    private List<Account> accounts;
+    private final List<Account> accounts;
 
     public Customer(String name) {
         super(name);
