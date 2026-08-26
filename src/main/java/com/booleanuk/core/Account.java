@@ -1,15 +1,20 @@
 package com.booleanuk.core;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Account {
 
     private String name;
     private BigDecimal balance;
+    private final List<Transaction> transactions;
 
     public Account(String name, BigDecimal balance) {
         this.name = name;
         this.balance = balance;
+        this.transactions = new ArrayList<>();
     }
 
     public String getName() {
@@ -23,6 +28,15 @@ public abstract class Account {
     public void deposit(BigDecimal money) {
         if (money.compareTo(BigDecimal.ZERO) > 0) {
             this.balance = this.balance.add(money);
+
+            Transaction transaction = new Transaction(
+                    Instant.now(),
+                    null,
+                    money,
+                    getBalance());
+
+            transactions.add(transaction);
+
             return;
         }
 
@@ -41,5 +55,9 @@ public abstract class Account {
         }
 
         throw new IllegalArgumentException("You can not withdraw 0$ or negative money. " + money + "$");
+    }
+
+    public List<Transaction> getTransactions() {
+        return this.transactions;
     }
 }
