@@ -5,10 +5,10 @@ import java.time.Instant;
 
 public class Transaction {
 
-    private Instant date;
-    private BigDecimal balance;
-    private BigDecimal debit;
-    private BigDecimal credit;
+    private final Instant date;
+    private final BigDecimal balance;
+    private final BigDecimal debit;
+    private final BigDecimal credit;
 
     public Transaction(
             Instant date, BigDecimal credit, BigDecimal debit, BigDecimal balance
@@ -19,8 +19,8 @@ public class Transaction {
         this.credit = credit;
     }
 
-    public Instant getDate() {
-        return this.date;
+    public String getDate() {
+        return DateFormatter.format(this.date);
     }
 
     public BigDecimal getCredit() {
