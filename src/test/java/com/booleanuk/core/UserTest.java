@@ -1,5 +1,6 @@
 package com.booleanuk.core;
 
+import com.booleanuk.core.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

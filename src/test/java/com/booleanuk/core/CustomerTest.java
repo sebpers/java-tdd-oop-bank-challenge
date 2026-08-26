@@ -1,6 +1,10 @@
 package com.booleanuk.core;
 
 
+import com.booleanuk.core.account.Account;
+import com.booleanuk.core.account.CurrentAccount;
+import com.booleanuk.core.account.SavingsAccount;
+import com.booleanuk.core.user.Customer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

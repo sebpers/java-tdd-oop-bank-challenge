@@ -1,4 +1,4 @@
-package com.booleanuk.core;
+package com.booleanuk.core.user;
 
 public class User {
     private String name;

@@ -1,4 +1,6 @@
-package com.booleanuk.core;
+package com.booleanuk.core.transaction;
+
+import com.booleanuk.core.util.DateFormatter;
 
 import java.math.BigDecimal;
 import java.time.Instant;

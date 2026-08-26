@@ -1,4 +1,6 @@
-package com.booleanuk.core;
+package com.booleanuk.core.account;
+
+import com.booleanuk.core.transaction.Transaction;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -7,7 +9,7 @@ import java.util.List;
 
 public abstract class Account {
 
-    private String name;
+    private final String name;
     private BigDecimal balance;
     private final List<Transaction> transactions;
 
@@ -31,8 +33,8 @@ public abstract class Account {
 
             Transaction transaction = new Transaction(
                     Instant.now(),
-                    null,
                     money,
+                    null,
                     getBalance());
 
             transactions.add(transaction);
@@ -54,8 +56,8 @@ public abstract class Account {
 
             Transaction transaction = new Transaction(
                     Instant.now(),
-                    money,
                     null,
+                    money,
                     getBalance());
 
             transactions.add(transaction);

@@ -1,5 +1,7 @@
 package com.booleanuk.core;
 
+import com.booleanuk.core.account.Account;
+import com.booleanuk.core.transaction.Transaction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -87,9 +89,9 @@ public class AccountTest {
 
         String expectedResult = "" +
                 "date || credit || debit || balance\n" +
-                "26/08/2026 ||        ||   100 || 100\n" +
-                "26/08/2026 ||        ||   200 || 300\n" +
-                "26/08/2026 ||  50.53 ||       || 249.47\n";
+                "26/08/2026 ||    100 ||       || 100\n" +
+                "26/08/2026 ||    200 ||       || 300\n" +
+                "26/08/2026 ||        || 50.53 || 249.47\n";
 
         Assertions.assertEquals(expectedResult, print);
     }

@@ -1,9 +1,11 @@
-package com.booleanuk.core;
+package com.booleanuk.core.user;
+
+import com.booleanuk.core.account.Account;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer extends User{
+public class Customer extends User {
 
     private final List<Account> accounts;
 

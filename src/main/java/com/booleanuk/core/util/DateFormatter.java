@@ -1,4 +1,4 @@
-package com.booleanuk.core;
+package com.booleanuk.core.util;
 
 import java.time.Instant;
 import java.time.ZoneId;
