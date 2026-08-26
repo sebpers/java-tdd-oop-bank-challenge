@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CustomerTest {
 
     Customer customer;
-    CurrentAccount currentAccount = new CurrentAccount("Salary account");
-    SavingsAccount savingsAccount = new SavingsAccount("House account");
+    CurrentAccount currentAccount = new CurrentAccount("Salary account", BigDecimal.ZERO);
+    SavingsAccount savingsAccount = new SavingsAccount("House account", BigDecimal.ZERO);
 
     @BeforeEach
     public void init() {
