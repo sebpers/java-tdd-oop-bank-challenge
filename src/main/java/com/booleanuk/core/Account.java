@@ -31,6 +31,11 @@ public abstract class Account {
 
     public void withdraw(BigDecimal money) {
         if (money.compareTo(BigDecimal.ZERO) > 0) {
+
+            if (this.balance.compareTo(money) < 0) {
+                throw new IllegalArgumentException("Not enough balance. (" + balance + "$)");
+            }
+
             this.balance = this.balance.subtract(money);
             return;
         }

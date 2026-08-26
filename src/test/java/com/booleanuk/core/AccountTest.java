@@ -64,6 +64,6 @@ public class AccountTest {
         account.deposit(money);
 
         IllegalArgumentException ex = Assertions.assertThrows(IllegalArgumentException.class, () -> account.withdraw(BigDecimal.valueOf(200)));
-        Assertions.assertEquals("You can not withdraw 0$ or negative money." + money, ex.getMessage());
+        Assertions.assertEquals("Not enough balance. (" + money + "$)", ex.getMessage());
     }
 }
