@@ -17,4 +17,8 @@ public class Customer extends User{
 
         return account;
     }
+
+    public List<Account> getAccounts() {
+        return null;
+    }
 }
