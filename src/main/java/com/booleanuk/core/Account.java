@@ -19,4 +19,8 @@ public abstract class Account {
     public BigDecimal getBalance() {
         return this.balance;
     }
+
+    public void deposit(BigDecimal value) {
+        this.balance = this.balance.add(value);
+    }
 }
