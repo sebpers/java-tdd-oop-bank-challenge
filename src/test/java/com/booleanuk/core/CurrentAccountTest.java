@@ -13,7 +13,7 @@ public class CurrentAccountTest {
 
     @BeforeEach
     public void init() {
-        this.currenAccount = new CurrentAccount("John Doe", BigDecimal.ZERO);
+        this.currenAccount = new CurrentAccount("John Doe");
     }
 
     @Test

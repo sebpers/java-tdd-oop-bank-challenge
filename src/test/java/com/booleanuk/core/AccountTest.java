@@ -15,7 +15,7 @@ public class AccountTest {
 
     @BeforeEach
     public void init() {
-        this.account = new Account("John Does savings", BigDecimal.ZERO) {};
+        this.account = new Account("John Does savings") {};
     }
 
     @Test

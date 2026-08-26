@@ -10,12 +10,10 @@ import java.util.List;
 public abstract class Account {
 
     private final String name;
-    private BigDecimal balance;
     private final List<Transaction> transactions;
 
-    public Account(String name, BigDecimal balance) {
+    public Account(String name) {
         this.name = name;
-        this.balance = balance;
         this.transactions = new ArrayList<>();
     }
 
@@ -24,12 +22,25 @@ public abstract class Account {
     }
 
     public BigDecimal getBalance() {
-        return this.balance;
+
+        BigDecimal balance = BigDecimal.ZERO;
+
+        for (Transaction transaction : transactions) {
+
+            if (transaction.getCredit() != null) {
+                balance = balance.add(transaction.getCredit());
+            }
+
+            if (transaction.getDebit() != null) {
+                balance = balance.subtract(transaction.getDebit());
+            }
+        }
+
+        return balance;
     }
 
     public void deposit(BigDecimal money) {
         if (money.compareTo(BigDecimal.ZERO) > 0) {
-            this.balance = this.balance.add(money);
 
             Transaction transaction = new Transaction(
                     Instant.now(),
@@ -46,21 +57,24 @@ public abstract class Account {
     }
 
     public void withdraw(BigDecimal money) {
+        BigDecimal balance = getBalance();
+
         if (money.compareTo(BigDecimal.ZERO) > 0) {
 
-            if (this.balance.compareTo(money) < 0) {
+            if (balance.compareTo(money) < 0) {
                 throw new IllegalArgumentException("Not enough balance. (" + balance + "$)");
             }
 
-            this.balance = this.balance.subtract(money);
+            balance = balance.subtract(money);
 
             Transaction transaction = new Transaction(
                     Instant.now(),
                     null,
                     money,
-                    getBalance());
+                    balance);
 
             transactions.add(transaction);
+
             return;
         }
 

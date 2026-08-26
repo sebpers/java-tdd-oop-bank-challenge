@@ -15,8 +15,8 @@ import java.util.List;
 public class CustomerTest {
 
     Customer customer;
-    CurrentAccount currentAccount = new CurrentAccount("Salary account", BigDecimal.ZERO);
-    SavingsAccount savingsAccount = new SavingsAccount("House account", BigDecimal.ZERO);
+    CurrentAccount currentAccount = new CurrentAccount("Salary account");
+    SavingsAccount savingsAccount = new SavingsAccount("House account");
 
     @BeforeEach
     public void init() {
