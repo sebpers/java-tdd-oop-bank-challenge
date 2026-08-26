@@ -32,6 +32,11 @@ public class TransactionTest {
   }
 
   @Test
+  public void shouldGetDebit_successfully() {
+    Assertions.assertEquals(BigDecimal.valueOf(200), transaction.getDebit());
+  }
+
+  @Test
   public void shouldGetBalance_successfully() {
     Assertions.assertEquals(BigDecimal.valueOf(500), transaction.getBalance());
   }
