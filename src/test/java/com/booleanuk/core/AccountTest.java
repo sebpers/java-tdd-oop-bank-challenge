@@ -44,4 +44,18 @@ public class AccountTest {
 
         Assertions.assertEquals("You can not deposit 0$ or negative money. " + BigDecimal.valueOf(-100) + "$", ex.getMessage());
     }
+
+
+    @Test
+    public void deposit_shouldWithdraw_successfully() {
+        BigDecimal money = BigDecimal.valueOf(200);
+        account.deposit(money);
+
+        account.withdraw(BigDecimal.valueOf(100));
+
+        BigDecimal balance = account.getBalance();
+
+        Assertions.assertEquals(BigDecimal.valueOf(100), balance);
+    }
+
 }
