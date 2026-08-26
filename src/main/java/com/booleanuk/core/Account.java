@@ -20,7 +20,12 @@ public abstract class Account {
         return this.balance;
     }
 
-    public void deposit(BigDecimal value) {
-        this.balance = this.balance.add(value);
+    public void deposit(BigDecimal money) {
+        if (money.compareTo(BigDecimal.ZERO) > 0) {
+            this.balance = this.balance.add(money);
+            return;
+        }
+
+        throw new IllegalArgumentException("You can not deposit 0$ or negative money. " + money + "$");
     }
 }
