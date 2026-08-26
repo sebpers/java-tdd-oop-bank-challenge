@@ -47,7 +47,7 @@ public class AccountTest {
 
 
     @Test
-    public void deposit_shouldWithdraw_successfully() {
+    public void withdraw_shouldWithdraw_successfully() {
         BigDecimal money = BigDecimal.valueOf(200);
         account.deposit(money);
 
@@ -58,4 +58,12 @@ public class AccountTest {
         Assertions.assertEquals(BigDecimal.valueOf(100), balance);
     }
 
+    @Test
+    public void withdraw_shouldThrowIllegalArgumentException_successfully() {
+        BigDecimal money = BigDecimal.valueOf(100);
+        account.deposit(money);
+
+        IllegalArgumentException ex = Assertions.assertThrows(IllegalArgumentException.class, () -> account.withdraw(BigDecimal.valueOf(200)));
+        Assertions.assertEquals("You can not withdraw 0$ or negative money." + money, ex.getMessage());
+    }
 }
