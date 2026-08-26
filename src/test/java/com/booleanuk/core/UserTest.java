@@ -11,4 +11,11 @@ public class UserTest {
 
         Assertions.assertEquals("John Doe", user.getName());
     }
+
+    @Test
+    public void shouldThrowIllegalArgumentExceptionWhenEnteringNullName() {
+        IllegalArgumentException ex = Assertions.assertThrows(IllegalArgumentException.class, () -> new User(null));
+
+        Assertions.assertEquals("Name can't be null or empty",ex.getMessage());
+    }
 }
