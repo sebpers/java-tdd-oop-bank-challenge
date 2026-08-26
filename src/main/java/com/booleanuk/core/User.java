@@ -12,6 +12,10 @@ public class User {
     }
 
     public void setName(String name) {
+        if (name == null || name.trim().isBlank()) {
+            throw new IllegalArgumentException("Name can't be null or empty");
+        }
+
         this.name = name;
     }
 }
