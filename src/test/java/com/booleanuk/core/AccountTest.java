@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class AccountTest {
 
@@ -43,6 +44,16 @@ public class AccountTest {
         IllegalArgumentException ex = Assertions.assertThrows(IllegalArgumentException.class, () -> account.deposit(money));
 
         Assertions.assertEquals("You can not deposit 0$ or negative money. " + BigDecimal.valueOf(-100) + "$", ex.getMessage());
+    }
+
+    @Test
+    public void deposit_shouldAddTransaction_successfully() {
+        account.deposit(BigDecimal.valueOf(100));
+        account.deposit(BigDecimal.valueOf(200));
+
+        List<Transaction> transactions = account.getTransactions();
+
+        Assertions.assertEquals(2, transactions.size());
     }
 
 
