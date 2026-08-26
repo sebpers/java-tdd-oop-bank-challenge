@@ -16,9 +16,9 @@ public class TransactionTest {
   public void init() {
     this.transaction = new Transaction(
             Instant.now(),
-            BigDecimal.valueOf(500),
-            BigDecimal.valueOf(100),
-            BigDecimal.valueOf(100));
+            BigDecimal.valueOf(100), // balance
+            BigDecimal.valueOf(100), // credit
+            BigDecimal.valueOf(500)); // debit
   }
 
   @Test
@@ -26,5 +26,9 @@ public class TransactionTest {
         Assertions.assertEquals(DateFormatter.format(Instant.now()), transaction.getDate());
   }
 
+  @Test
+  public void shouldGetBalance_successfully() {
+    Assertions.assertEquals(BigDecimal.valueOf(500), transaction.getBalance());
+  }
 
 }
