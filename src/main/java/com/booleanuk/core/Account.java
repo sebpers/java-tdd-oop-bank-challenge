@@ -2,8 +2,6 @@ package com.booleanuk.core;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +10,6 @@ public abstract class Account {
     private String name;
     private BigDecimal balance;
     private final List<Transaction> transactions;
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            .withZone(ZoneId.systemDefault());
 
     public Account(String name, BigDecimal balance) {
         this.name = name;
@@ -80,7 +75,7 @@ public abstract class Account {
         StringBuilder print = new StringBuilder();
 
         for (Transaction t : this.transactions) {
-            String date = formatter.format(t.getDate());
+            String date = t.getDate();
             String credit = formatNullToString(t.getCredit());
             String debit = formatNullToString(t.getDebit());
             String balance = formatNullToString(t.getBalance());
