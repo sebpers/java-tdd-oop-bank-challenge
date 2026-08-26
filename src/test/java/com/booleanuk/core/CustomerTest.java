@@ -29,6 +29,14 @@ public class CustomerTest {
     }
 
     @Test
+    public void createAccount_shouldCreateANewSavingsAccount() {
+        Account savingsAccount = customer.createAccount(this.savingsAccount);
+
+        Assertions.assertEquals(currentAccount, this.savingsAccount);
+        Assertions.assertNotNull(this.savingsAccount);
+    }
+
+    @Test
     public void getAllAccounts_shouldReturnAllAccounts_successfully() {
         customer.createAccount(currentAccount);
         customer.createAccount(currentAccount);
