@@ -36,4 +36,12 @@ public class AccountTest {
 
         Assertions.assertEquals(BigDecimal.valueOf(100), balance);
     }
+
+    @Test
+    public void deposit_shouldFailIfDepositingNegativeNumber_fail() {
+        BigDecimal money = BigDecimal.valueOf(-100);
+        IllegalArgumentException ex = Assertions.assertThrows(IllegalArgumentException.class, () -> account.deposit(money));
+
+        Assertions.assertEquals("You can not deposit 0$ or negative money. " + BigDecimal.valueOf(-100) + "$", ex.getMessage());
+    }
 }
