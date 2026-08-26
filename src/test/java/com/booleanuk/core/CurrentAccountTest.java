@@ -21,4 +21,11 @@ public class CurrentAccountTest {
 
         Assertions.assertEquals("John Doe", name);
     }
+
+    @Test
+    public void getBalance() {
+        BigDecimal balance = currenAccount.getBalance();
+
+        Assertions.assertEquals(BigDecimal.valueOf(0), balance);
+    }
 }
