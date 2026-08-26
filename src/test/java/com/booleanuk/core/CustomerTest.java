@@ -32,7 +32,7 @@ public class CustomerTest {
     public void createAccount_shouldCreateANewSavingsAccount() {
         Account savingsAccount = customer.createAccount(this.savingsAccount);
 
-        Assertions.assertEquals(currentAccount, this.savingsAccount);
+        Assertions.assertEquals(savingsAccount, this.savingsAccount);
         Assertions.assertNotNull(this.savingsAccount);
     }
 
