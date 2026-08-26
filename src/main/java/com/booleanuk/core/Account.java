@@ -28,4 +28,13 @@ public abstract class Account {
 
         throw new IllegalArgumentException("You can not deposit 0$ or negative money. " + money + "$");
     }
+
+    public void withdraw(BigDecimal money) {
+        if (money.compareTo(BigDecimal.ZERO) > 0) {
+            this.balance = this.balance.subtract(money);
+            return;
+        }
+
+        throw new IllegalArgumentException("You can not withdraw 0$ or negative money. " + money + "$");
+    }
 }
