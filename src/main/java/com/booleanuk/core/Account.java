@@ -5,7 +5,7 @@ public abstract class Account {
     private String name;
 
     public Account(String name) {
-        this.name = "";
+        this.name = name;
     }
 
     public String getName() {
