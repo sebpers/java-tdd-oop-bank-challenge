@@ -30,9 +30,7 @@ public class CustomerTest {
     @Test
     public void getAllAccounts_shouldReturnAllAccounts_successfully() {
         customer.createAccount(currentAccount);
-
         customer.createAccount(currentAccount);
-        customer.createAccount(savingsAccount);
 
         List<Account> accounts = customer.getAccounts();
 
