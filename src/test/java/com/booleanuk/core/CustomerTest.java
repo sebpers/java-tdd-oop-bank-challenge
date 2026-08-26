@@ -10,8 +10,8 @@ import java.util.List;
 public class CustomerTest {
 
     Customer customer;
-    CurrentAccount currentAccount = new CurrentAccount();
-    SavingsAccount savingsAccount = new SavingsAccount();
+    CurrentAccount currentAccount = new CurrentAccount("Salary account");
+    SavingsAccount savingsAccount = new SavingsAccount("House account");
 
     @BeforeEach
     public void init() {
