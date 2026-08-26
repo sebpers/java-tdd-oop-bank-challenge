@@ -56,7 +56,6 @@ public class AccountTest {
         Assertions.assertEquals(2, transactions.size());
     }
 
-
     @Test
     public void withdraw_shouldWithdraw_successfully() {
         BigDecimal money = BigDecimal.valueOf(200);
@@ -76,5 +75,22 @@ public class AccountTest {
 
         IllegalArgumentException ex = Assertions.assertThrows(IllegalArgumentException.class, () -> account.withdraw(BigDecimal.valueOf(200)));
         Assertions.assertEquals("Not enough balance. (" + money + "$)", ex.getMessage());
+    }
+
+    @Test
+    public void getTransactionsOnPrint_shouldGetAllTransaction_successfully() {
+        account.deposit(BigDecimal.valueOf(100));
+        account.deposit(BigDecimal.valueOf(200));
+        account.withdraw(BigDecimal.valueOf(50.53));
+
+        String print = account.getTransactionsOnPrint();
+
+        String expectedResult = "" +
+                "date || credit || debit || balance\n" +
+                "26/08/2026 ||        ||   100 || 100\n" +
+                "26/08/2026 ||        ||   200 || 300\n" +
+                "26/08/2026 ||  50.53 ||       || 249.47\n";
+
+        Assertions.assertEquals(expectedResult, print);
     }
 }
